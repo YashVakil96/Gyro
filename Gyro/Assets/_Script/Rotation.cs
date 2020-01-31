@@ -1,64 +1,78 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class Rotation : MonoBehaviour
 {
+    #region Variables;
     public Vector2 startPos;
     public Vector2 direction;
     public Vector2 Olddirection;
 
-    public Text m_Text;
-    string message;
     private float x;
+    private float startTime;
+    private Rigidbody2D rb;
+    #endregion
 
+
+    #region System Methods
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
     void Update()
     {
-        //Update the Text on the screen depending on current TouchPhase, and the current direction vector
-        m_Text.text = "Touch : " + message + "in direction" + direction;
-
-        // Track a single touch as a direction control.
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
-
-            // Handle finger movements based on TouchPhase
+            Vector3 touchpos = Camera.main.ScreenToWorldPoint(touch.position);
             switch (touch.phase)
             {
-                //When a touch has first been detected, change the message and record the starting position
                 case TouchPhase.Began:
-                    // Record initial touch position.
                     startPos = touch.position;
-                    message = "Begun ";
                     Olddirection = startPos;
+                    startTime = Time.time;
+                    Debug.DrawLine(Vector3.zero, touchpos, Color.blue);
                     break;
 
-                //Determine if the touch is a moving touch
                 case TouchPhase.Moved:
-                    // Determine direction by comparing the current touch position with the initial one
-                    direction = touch.position - startPos;
-                    if (direction.x >= Olddirection.x)
-                    {
-                        x += touch.deltaTime * 100;
 
-                    }
-                    else
-                    {
-                        x -= touch.deltaTime * 100;
-                    }
+                    
+                    Debug.DrawLine(Vector3.zero, touchpos,Color.blue);
+                    direction = touch.position - startPos;
+                    
+                    //This code can be applied to Scroll bar in the bottom of the screen
+                    //if (direction.x >= Olddirection.x)
+                    //{
+                    //    x += touch.deltaTime * 100;
+
+                    //}
+                    //else
+                    //{
+                    //    x -= touch.deltaTime * 100;
+                    //}
                     Olddirection = direction;
                     transform.rotation = Quaternion.Euler(0, 0,x);
-                    message = "Moving ";
+
                     break;
 
                 case TouchPhase.Ended:
-                    // Report that the touch has ended when it ends
-                    message = "Ending ";
+                    Debug.DrawLine(Vector3.zero, touchpos, Color.blue);
                     break;
-            }
+
+            }//Switch
             
-        }
+        }//if
         
-    }
-}
+    }//Update
+
+    #endregion
+
+    #region User Define Methods
+
+    private void SwipeSpeed(Vector2 OldPos, Vector2 TouchPos)
+    {
+
+    }//Swipe Speed
+
+    #endregion
+}//Class
