@@ -49,7 +49,7 @@ public class NewRotation : MonoBehaviour
                         speed = touch.position.magnitude - OldTouch.magnitude;
                         Debug.Log("SPEED: "+speed);
                         Debug.Log("Right");
-                        x = 100 * Time.deltaTime;
+                        x = 1000 * Time.deltaTime;
                         transform.Rotate(0,0,x);
                     }
                     else

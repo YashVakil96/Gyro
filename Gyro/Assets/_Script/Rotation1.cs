@@ -5,13 +5,13 @@ public class Rotation1 : MonoBehaviour
     #region Variables
 
     public float speed;
-    private Quaternion rotationZ;
     private Touch touch;
-    private Vector2 TouchPos;
     Vector2 direction;
+    private Quaternion oldRotation;
     float angle;
     Quaternion rotation;
-
+    Vector2 TouchBegun;
+    Vector2 OldTouch;
     #endregion
 
     #region System Methods
@@ -21,39 +21,50 @@ public class Rotation1 : MonoBehaviour
         if (Input.touchCount>0)
         {
             touch = Input.GetTouch(0);
-
-            /*
-            Vector2 direction = Camera.main.ScreenToWorldPoint(touch.position)-transform.position;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            Quaternion rotation = Quaternion.AngleAxis(angle,Vector3.forward);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, speed * Time.deltaTime);
-             */
-
             switch (touch.phase)
             {
                 case TouchPhase.Began:
 
-                    FaceTouch();
-                    //transform.rotation = rotation;
-                    Debug.Log(rotation);
+                    OldTouch = touch.position;
+                    Debug.DrawLine(Vector3.zero, Camera.main.ScreenToWorldPoint(touch.position),Color.blue);
 
                     break;
 
                 case TouchPhase.Moved:
-                    FaceTouch();
-                    //transform.rotation = rotation;
-                    //direction = Camera.main.ScreenToWorldPoint(touch.position) - transform.position;
-                    //angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                    //rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-                    //Debug.Log(rotation);
 
-                    //rotationZ = Quaternion.Euler(0f, 0f, touch.deltaPosition.x * speed);//This can be used in Scroll Bar
-                    ////transform.rotation = Quaternion.Slerp(transform.rotation, rotationZ * transform.rotation, speed * Time.deltaTime);
-                    //transform.rotation = rotationZ * transform.rotation;
+                    Debug.DrawLine(Vector3.zero, Camera.main.ScreenToWorldPoint(touch.position), Color.blue);
+
+                    direction = Camera.main.ScreenToWorldPoint(touch.position) - transform.position;
+                    angle = (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg)-90;
+                    rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+                    Vector3 newRotation = transform.localEulerAngles;
+                    if(OldTouch.magnitude<touch.position.magnitude)
+                    {
+                        //Right Rotation Code
+                        newRotation.z -= rotation.z * speed * Time.deltaTime;
+                        transform.localEulerAngles = newRotation;
+                    }
+                    else
+                    {
+                        //Left Rotation code
+                        newRotation.z += rotation.z * speed * Time.deltaTime;
+                        transform.localEulerAngles = newRotation;
+                    }
+
+                    OldTouch = touch.position;
+                    break;
+
+                case TouchPhase.Stationary:
+
+                    Debug.DrawLine(Vector3.zero, Camera.main.ScreenToWorldPoint(touch.position), Color.blue);
+
                     break;
 
                 case TouchPhase.Ended:
-                    //transform.rotation = rotation;
+
+                    oldRotation = transform.rotation;
+
                     break;
                     
             }//Switch Touch Phase
@@ -65,13 +76,6 @@ public class Rotation1 : MonoBehaviour
     #endregion
 
     #region User Define Methods
-
-    void FaceTouch()
-    {
-        TouchPos = Camera.main.ScreenToWorldPoint(touch.position);
-        Vector2 direction =new Vector2(TouchPos.x-transform.position.x, TouchPos.y - transform.position.y) ;
-        transform.up = direction;
-    }
 
     #endregion
 
