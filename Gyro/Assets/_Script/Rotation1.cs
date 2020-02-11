@@ -10,7 +10,6 @@ public class Rotation1 : MonoBehaviour
     private Quaternion oldRotation;
     float angle;
     Quaternion rotation;
-    Vector2 TouchBegun;
     Vector2 OldTouch;
     #endregion
 
@@ -35,7 +34,7 @@ public class Rotation1 : MonoBehaviour
                     Debug.DrawLine(Vector3.zero, Camera.main.ScreenToWorldPoint(touch.position), Color.blue);
 
                     direction = Camera.main.ScreenToWorldPoint(touch.position) - transform.position;
-                    angle = (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg)-90;
+                    angle = (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
                     rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
                     Vector3 newRotation = transform.localEulerAngles;
@@ -64,7 +63,6 @@ public class Rotation1 : MonoBehaviour
                 case TouchPhase.Ended:
 
                     oldRotation = transform.rotation;
-
                     break;
                     
             }//Switch Touch Phase
