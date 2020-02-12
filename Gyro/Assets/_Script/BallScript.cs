@@ -56,13 +56,13 @@ public class BallScript : MonoBehaviour
             if(BallGenerator.PatternGenerator==0)
             {
                 BallGenerator.TriggerIsSet = true;//Script 1
-                Debug.Log("Hits");
+                //Debug.Log("Hits");
                 BallGenerator.IsPatternRunning = false;
             }
 
             else if(BallGenerator.PatternGenerator==1)
             {
-                Debug.Log("HERE");
+                //Debug.Log("HERE");
                 BallGenerator.RowCounter++;
                 Debug.Log(BallGenerator.RowCounter);
                 if(BallGenerator.RowCounter == 3)
@@ -73,7 +73,7 @@ public class BallScript : MonoBehaviour
             }
             else if(BallGenerator.PatternGenerator == 2)
             {
-                Debug.Log("Pattern 2");
+                //Debug.Log("Pattern 2");
                 BallGenerator.C2Counter++;
                 if(BallGenerator.C2Counter==2)
                 {
@@ -83,7 +83,7 @@ public class BallScript : MonoBehaviour
             }
             else if (BallGenerator.PatternGenerator == 3)
             {
-                Debug.Log("Pattern 3");
+                //Debug.Log("Pattern 3");
                 BallGenerator.C3Counter++;
                 if (BallGenerator.C3Counter == 3)
                 {
@@ -93,7 +93,7 @@ public class BallScript : MonoBehaviour
             }
             else if (BallGenerator.PatternGenerator == 4)
             {
-                Debug.Log("Pattern 4");
+                //Debug.Log("Pattern 4");
                 BallGenerator.BarrageCounter++;
                 if (BallGenerator.BarrageCounter == 10)
                 {

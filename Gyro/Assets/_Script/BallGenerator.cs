@@ -154,13 +154,13 @@ public class BallGenerator : MonoBehaviour
                 #pragma warning disable CS1717 // Assignment made to same variable
                 BallScript.SpeedStatic = BallScript.SpeedStatic;
                 #pragma warning restore CS1717 // Assignment made to same variable
-                Instantiate(Ball[BallSelector], new Vector2(transform.position.x + .5f, transform.position.y + .5f), Quaternion.identity);
+                Instantiate(Ball[BallSelector], new Vector2(transform.position.x + .8f, transform.position.y + .2f), Quaternion.identity);
                 yield return new WaitForSeconds(.2f);
 
                 #pragma warning disable CS1717 // Assignment made to same variable
                 BallScript.SpeedStatic = BallScript.SpeedStatic;
                 #pragma warning restore CS1717 // Assignment made to same variable
-                Instantiate(Ball[BallSelector], new Vector2(transform.position.x + 1f, transform.position.y + 1f), Quaternion.identity);
+                Instantiate(Ball[BallSelector], new Vector2(transform.position.x + .5f, transform.position.y + 1.3f), Quaternion.identity);
                 yield return new WaitForSeconds(.2f);
             }//if Right
             else
@@ -176,13 +176,13 @@ public class BallGenerator : MonoBehaviour
                 #pragma warning disable CS1717 // Assignment made to same variable
                 BallScript.SpeedStatic = BallScript.SpeedStatic;
                 #pragma warning restore CS1717 // Assignment made to same variable
-                Instantiate(Ball[BallSelector], new Vector2(transform.position.x - .5f, transform.position.y + .5f), Quaternion.identity);
+                Instantiate(Ball[BallSelector], new Vector2(transform.position.x - .8f, transform.position.y + .2f), Quaternion.identity);
                 yield return new WaitForSeconds(.2f);
 
                 #pragma warning disable CS1717 // Assignment made to same variable
                 BallScript.SpeedStatic = BallScript.SpeedStatic;
                 #pragma warning restore CS1717 // Assignment made to same variable
-                Instantiate(Ball[BallSelector], new Vector2(transform.position.x - 1f, transform.position.y + 1f), Quaternion.identity);
+                Instantiate(Ball[BallSelector], new Vector2(transform.position.x - .5f, transform.position.y + 1.3f), Quaternion.identity);
                 yield return new WaitForSeconds(.2f);
             }//else Left
 
@@ -204,13 +204,13 @@ public class BallGenerator : MonoBehaviour
                 #pragma warning disable CS1717 // Assignment made to same variable
                 BallScript.SpeedStatic = BallScript.SpeedStatic;
                 #pragma warning restore CS1717 // Assignment made to same variable
-                Instantiate(Ball[BallSelector], new Vector2(transform.position.x + .5f, transform.position.y - .5f), Quaternion.identity);
+                Instantiate(Ball[BallSelector], new Vector2(transform.position.x + .8f, transform.position.y - .2f), Quaternion.identity);
                 yield return new WaitForSeconds(.2f);
 
                 #pragma warning disable CS1717 // Assignment made to same variable
                 BallScript.SpeedStatic = BallScript.SpeedStatic;
                 #pragma warning restore CS1717 // Assignment made to same variable
-                Instantiate(Ball[BallSelector], new Vector2(transform.position.x + 1f, transform.position.y - 1f), Quaternion.identity);
+                Instantiate(Ball[BallSelector], new Vector2(transform.position.x + .5f, transform.position.y - 1.3f), Quaternion.identity);
                 yield return new WaitForSeconds(.2f);
             }//If Right
             else
@@ -226,13 +226,13 @@ public class BallGenerator : MonoBehaviour
                 #pragma warning disable CS1717 // Assignment made to same variable
                 BallScript.SpeedStatic = BallScript.SpeedStatic;
                 #pragma warning restore CS1717 // Assignment made to same variable
-                Instantiate(Ball[BallSelector], new Vector2(transform.position.x - .5f, transform.position.y - .5f), Quaternion.identity);
+                Instantiate(Ball[BallSelector], new Vector2(transform.position.x - .8f, transform.position.y - .2f), Quaternion.identity);
                 yield return new WaitForSeconds(.2f);
 
                 #pragma warning disable CS1717 // Assignment made to same variable
                 BallScript.SpeedStatic = BallScript.SpeedStatic;
                 #pragma warning restore CS1717 // Assignment made to same variable
-                Instantiate(Ball[BallSelector], new Vector2(transform.position.x - 1f, transform.position.y - 1f), Quaternion.identity);
+                Instantiate(Ball[BallSelector], new Vector2(transform.position.x - .5f, transform.position.y - 1.3f), Quaternion.identity);
                 yield return new WaitForSeconds(.2f);
             }//else Left
 
@@ -400,7 +400,9 @@ public class BallGenerator : MonoBehaviour
 
     IEnumerator Color3EnumC1()
     {
-        BallScript.SpeedStatic = Random.Range(2, 5);
+        #pragma warning disable CS1717 // Assignment made to same variable
+        BallScript.SpeedStatic = BallScript.SpeedStatic;
+        #pragma warning restore CS1717 // Assignment made to same variable
         Instantiate(Ball[BallSelector], TopRight.position, Quaternion.identity);
         yield return new WaitForSeconds(.2f);
 
@@ -420,7 +422,9 @@ public class BallGenerator : MonoBehaviour
 
     IEnumerator Color3EnumC2()
     {
-        BallScript.SpeedStatic = Random.Range(2, 5);
+        #pragma warning disable CS1717 // Assignment made to same variable
+        BallScript.SpeedStatic = BallScript.SpeedStatic;
+        #pragma warning restore CS1717 // Assignment made to same variable
         Instantiate(Ball[BallSelector], TopRight.position, Quaternion.identity);
         yield return new WaitForSeconds(.2f);
 
@@ -440,7 +444,9 @@ public class BallGenerator : MonoBehaviour
 
     IEnumerator Color3EnumC3()
     {
-        BallScript.SpeedStatic = Random.Range(2, 5);
+        #pragma warning disable CS1717 // Assignment made to same variable
+        BallScript.SpeedStatic = BallScript.SpeedStatic;
+        #pragma warning restore CS1717 // Assignment made to same variable
         Instantiate(Ball[BallSelector], TopRight.position, Quaternion.identity);
         yield return new WaitForSeconds(.2f);
 
@@ -466,19 +472,19 @@ public class BallGenerator : MonoBehaviour
         IsPatternRunning = true;
         
         BallSelector = Random.Range(0, 3);
-#pragma warning disable CS1717 // Assignment made to same variable
+        #pragma warning disable CS1717 // Assignment made to same variable
         BallScript.SpeedStatic = BallScript.SpeedStatic;
-#pragma warning restore CS1717 // Assignment made to same variable
+        #pragma warning restore CS1717 // Assignment made to same variable
         StartCoroutine(BallBarageEnum(0));
 
     }//BallBarrage
 
     IEnumerator BallBarageEnum(int i)
     {
-#pragma warning disable CS1717 // Assignment made to same variable
+        #pragma warning disable CS1717 // Assignment made to same variable
         BallScript.SpeedStatic = BallScript.SpeedStatic;
+        #pragma warning restore CS1717 // Assignment made to same variable
         float time=.4f;
-#pragma warning restore CS1717 // Assignment made to same variable
 
         Instantiate(Ball[BallSelector], BallBarrageObject.transform.GetChild(i).transform.position, Quaternion.identity);
         i++;
