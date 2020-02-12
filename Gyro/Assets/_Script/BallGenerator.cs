@@ -27,6 +27,7 @@ public class BallGenerator : MonoBehaviour
     private int BallSelector;
     private Vector2 GenerationPoint;
     private Vector2 PreviousBallPos;
+    private int OldPattern;
 
     #endregion
 
@@ -47,24 +48,33 @@ public class BallGenerator : MonoBehaviour
             if (ScoreManager.ScorePoints <= 20)
             {
                 PatternGenerator = Random.Range(0, 2);
+                if(OldPattern==PatternGenerator)
+                {
+                    PatternGenerator = OldPattern == 0 ? 1 : 0;
+                }
             }
             else if (ScoreManager.ScorePoints <= 40 && ScoreManager.ScorePoints > 20)
             {
                 PatternGenerator = Random.Range(0, 3);
+                Pattern(0, 3);
             }
 
             else if (ScoreManager.ScorePoints <= 70 && ScoreManager.ScorePoints > 40)
             {
                 PatternGenerator = Random.Range(0, 4);
+                Pattern(0, 4);
             }
             else if (ScoreManager.ScorePoints <= 100 && ScoreManager.ScorePoints > 70)
             {
                 PatternGenerator = Random.Range(0, 5);
+                Pattern(0, 5);
             }
             else
             {
                 PatternGenerator = Random.Range(0, 5);
+                Pattern(0, 5);
             }
+            OldPattern = PatternGenerator;
 
             switch (PatternGenerator)
             {
@@ -579,6 +589,28 @@ public class BallGenerator : MonoBehaviour
         }
 
         transform.position = GenerationPoint;//Ball Generator takes the position
+    }//Check Generating Point
+
+    void Pattern(int Start, int End)
+    {
+        /*
+        Start Limit
+        End Limit
+
+         */
+        PatternGenerator = Random.Range(Start, End);
+        if (OldPattern == Start)
+        {
+            PatternGenerator = Random.Range(Start+1, End);
+        }
+        else if (OldPattern == End-1)
+        {
+            PatternGenerator = Random.Range(Start, End-1);
+        }
+        else
+        {
+            PatternGenerator = Random.Range(0, 2) == 0 ? PatternGenerator++ : PatternGenerator--;
+        }
     }
 
     #endregion
