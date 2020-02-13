@@ -3,8 +3,11 @@
 public class BallScript : MonoBehaviour
 {
     #region Variable
-    public float Speed;
     public static float SpeedStatic;
+    public static bool Dead;
+    public static string ObjectName;
+
+    public float Speed;
 
     private Transform FollowTarget;
     private Vector2 TargetPos;
@@ -28,7 +31,9 @@ public class BallScript : MonoBehaviour
         Vector3 localSize = new Vector3(size, size, 1);
         transform.localScale = localSize;
         BallGenerator.IsBallAlive = true;
-        
+        Dead = false;
+        Debug.Log(gameObject.GetInstanceID());
+        gameObject.name = gameObject.GetInstanceID().ToString();
         if(SpeedStatic>0)
         {
             Speed = SpeedStatic;
@@ -49,14 +54,19 @@ public class BallScript : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            Disappear(Tail.startColor.a);
-            Debug.Log("here");
+            //Debug.Log("here");
+            Dead = true;
             ScoreManager.ScorePoints++;
+            if(ObjectName == gameObject.name)
+            {
+                Destroy(this.gameObject);
+            }
             //Debug.Log("Score Points: " + ScoreManager.ScorePoints);
         }
 
         if(collision.gameObject.name=="TriggerLine")
         {
+            ObjectName = gameObject.name;
             if(BallGenerator.PatternGenerator==0)
             {
                 BallGenerator.TriggerIsSet = true;//Script 1
@@ -122,27 +132,6 @@ public class BallScript : MonoBehaviour
     public void MoveBall(float speed)
     {
         transform.position = Vector2.MoveTowards(transform.position, TargetPos, Speed * Time.deltaTime);
-    }
-
-
-    void Disappear(float a)
-    {
-        float alpha=a;
-        Debug.Log(alpha);
-        /*
-         tail fade out
-         */
-
-        for (float i = alpha; i >= 0; i -= Time.deltaTime)
-        {
-            Tail.startColor = new Color(Tail.startColor.r, Tail.startColor.g, Tail.startColor.b, alpha);
-            Tail.endColor = new Color(Tail.endColor.r, Tail.endColor.g, Tail.endColor.b, alpha);
-            alpha -= Time.deltaTime;
-            Debug.Log(alpha);
-        }
-        Destroy(this.gameObject);
-
-        Debug.Log("exit");
     }
     #endregion
 
