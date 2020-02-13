@@ -24,10 +24,14 @@ public class BallGenerator : MonoBehaviour
     public Transform Bottom;
     public GameObject BallBarrageObject;
 
-    private int BallSelector;
     private Vector2 GenerationPoint;
     private Vector2 PreviousBallPos;
+    private int BallSelector;
     private int OldPattern;
+    private int counterC2;
+    private int counterC3;
+    private int counterRow;
+    private int counterBB;
 
     #endregion
 
@@ -87,25 +91,58 @@ public class BallGenerator : MonoBehaviour
                 case 1:
                     //3 balls in a row of same color
                     GenerationPoint = GeneratingPoint();//Getting the spawnning point
-                    BallsRow();
+                    if(counterRow > 3)
+                    {
+                        BallsRow();
+                        counterRow = 0;
+                    }
+                    else
+                    {
+                        counterRow++;
+                    }
+
                     break;
 
                 case 2:
                     //2 Differnet color balls
                     GenerationPoint = GeneratingPoint();//Getting the spawnning point
-                    Color2();
+                    if(counterC2 > 3)
+                    {
+                        Color2();
+                        counterC2 = 0;
+                    }
+                    else
+                    {
+                        counterC2++;
+                    }
                     break;
 
                 case 3:
                     //3 Differnet color balls
                     GenerationPoint = GeneratingPoint();//Getting the spawnning point
-                    Color3();
+                    if(counterC3 > 3)
+                    {
+                        Color3();
+                        counterC3 = 0;
+                    }
+                    else
+                    {
+                        counterC3++;
+                    }
                     break;
 
                 case 4:
                     //ball barrage of same color generating on a circular path
                     GenerationPoint = GeneratingPoint();//Getting the spawnning point
-                    BallBarrage();
+                    if(counterBB > 10)
+                    {
+                        BallBarrage();
+                        counterBB = 0;
+                    }
+                    else
+                    {
+                        counterBB++;
+                    }
                     break;
 
             }//Switch
