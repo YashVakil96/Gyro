@@ -9,6 +9,7 @@ public class BallScript : MonoBehaviour
     private Transform FollowTarget;
     private Vector2 TargetPos;
     private float size;
+    private TrailRenderer Tail;
     
 
     #endregion
@@ -19,8 +20,11 @@ public class BallScript : MonoBehaviour
     private void Start()
     {
         FollowTarget = GameObject.Find("Follow").GetComponent<Transform>();
+        Tail = GetComponent<TrailRenderer>();
         TargetPos = FollowTarget.position;
         size = Random.Range(0.2f, 0.41f);
+        Tail.startWidth = size;
+        Tail.endWidth = size;
         Vector3 localSize = new Vector3(size, size, 1);
         transform.localScale = localSize;
         BallGenerator.IsBallAlive = true;
