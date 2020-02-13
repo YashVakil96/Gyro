@@ -59,7 +59,7 @@ public class BallScript : MonoBehaviour
             ScoreManager.ScorePoints++;
             if(ObjectName == gameObject.name)
             {
-                Destroy(this.gameObject);
+                //Destroy(this.gameObject);
             }
             //Debug.Log("Score Points: " + ScoreManager.ScorePoints);
         }
