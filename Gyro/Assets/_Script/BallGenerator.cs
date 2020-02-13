@@ -609,7 +609,7 @@ public class BallGenerator : MonoBehaviour
                 Point = new Vector2(x, y);
             }
         }
-        Debug.Log(Point);
+        //Debug.Log(Point);
         return Point;
 
     }//Generating Point
@@ -621,7 +621,7 @@ public class BallGenerator : MonoBehaviour
             if (GenerationPoint.y > PreviousBallPos.y - .5f && GenerationPoint.y < PreviousBallPos.y + .5f)
             {
                 GenerationPoint = GeneratingPoint();//Getting the spawnning point
-                Debug.Log("Point Generated");
+                //Debug.Log("Point Generated");
             }
         }
 

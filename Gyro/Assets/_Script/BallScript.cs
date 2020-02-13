@@ -38,7 +38,6 @@ public class BallScript : MonoBehaviour
             Speed = 1;
             SpeedStatic = Speed;
         }
-
     }//start
 
     private void Update()
@@ -50,7 +49,8 @@ public class BallScript : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            Destroy(this.gameObject);
+            Disappear(Tail.startColor.a);
+            Debug.Log("here");
             ScoreManager.ScorePoints++;
             //Debug.Log("Score Points: " + ScoreManager.ScorePoints);
         }
@@ -122,6 +122,27 @@ public class BallScript : MonoBehaviour
     public void MoveBall(float speed)
     {
         transform.position = Vector2.MoveTowards(transform.position, TargetPos, Speed * Time.deltaTime);
+    }
+
+
+    void Disappear(float a)
+    {
+        float alpha=a;
+        Debug.Log(alpha);
+        /*
+         tail fade out
+         */
+
+        for (float i = alpha; i >= 0; i -= Time.deltaTime)
+        {
+            Tail.startColor = new Color(Tail.startColor.r, Tail.startColor.g, Tail.startColor.b, alpha);
+            Tail.endColor = new Color(Tail.endColor.r, Tail.endColor.g, Tail.endColor.b, alpha);
+            alpha -= Time.deltaTime;
+            Debug.Log(alpha);
+        }
+        Destroy(this.gameObject);
+
+        Debug.Log("exit");
     }
     #endregion
 
