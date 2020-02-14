@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
-
+using System.Collections.Generic;
 public class Alpha : MonoBehaviour
 {
     #region Variable
+
+    public static List<string> Ballcount=new List<string>();
 
     private TrailRenderer Tail;
     private GameObject ball;
@@ -21,20 +23,10 @@ public class Alpha : MonoBehaviour
 
     private void Update()
     {
-        if(BallScript.Dead)
-        {
-            Debug.Log("here");
-            alpha -= Time.deltaTime;
-            Tail.startColor = new Color(Tail.startColor.r, Tail.startColor.g, Tail.startColor.b, alpha);
-            Tail.endColor = new Color(Tail.endColor.r, Tail.endColor.g, Tail.endColor.b, alpha);
-            if(alpha<=0)
-            {
-                alpha = 0;
-                Destroy(ball);
-                BallScript.Dead = false;
-            }
-
-        }//if Ball is Dead
+        Debug.Log("here");
+        alpha -= Time.deltaTime;
+        Tail.startColor = new Color(Tail.startColor.r, Tail.startColor.g, Tail.startColor.b, alpha);
+        Tail.endColor = new Color(Tail.endColor.r, Tail.endColor.g, Tail.endColor.b, alpha);
 
     }//Update
 

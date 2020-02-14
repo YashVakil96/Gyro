@@ -3,8 +3,8 @@
 public class BallScript : MonoBehaviour
 {
     #region Variable
+
     public static float SpeedStatic;
-    public static bool Dead;
     public static string ObjectName;
 
     public float Speed;
@@ -14,7 +14,6 @@ public class BallScript : MonoBehaviour
     private float size;
     private TrailRenderer Tail;
     
-
     #endregion
 
 
@@ -31,9 +30,10 @@ public class BallScript : MonoBehaviour
         Vector3 localSize = new Vector3(size, size, 1);
         transform.localScale = localSize;
         BallGenerator.IsBallAlive = true;
-        Dead = false;
-        Debug.Log(gameObject.GetInstanceID());
-        gameObject.name = gameObject.GetInstanceID().ToString();
+        this.gameObject.name = this.gameObject.GetInstanceID().ToString();
+        ObjectName = this.gameObject.name;
+        Alpha.Ballcount.Add(gameObject.name);
+
         if(SpeedStatic>0)
         {
             Speed = SpeedStatic;
@@ -55,18 +55,13 @@ public class BallScript : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             //Debug.Log("here");
-            Dead = true;
             ScoreManager.ScorePoints++;
-            if(ObjectName == gameObject.name)
-            {
-                //Destroy(this.gameObject);
-            }
+            //Destroy(this.gameObject);
             //Debug.Log("Score Points: " + ScoreManager.ScorePoints);
         }
 
         if(collision.gameObject.name=="TriggerLine")
         {
-            ObjectName = gameObject.name;
             if(BallGenerator.PatternGenerator==0)
             {
                 BallGenerator.TriggerIsSet = true;//Script 1
@@ -133,6 +128,8 @@ public class BallScript : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, TargetPos, Speed * Time.deltaTime);
     }
+
     #endregion
+
 
 }//class
