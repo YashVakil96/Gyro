@@ -271,7 +271,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!58 &331822258
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -867,6 +867,33 @@ Transform:
   m_Father: {fileID: 283914700}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1171918256 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7946329876389960894, guid: 20213fef74f5d45b7a44bc6dab6fd63a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4974076251531697910}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &1171918257
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171918256}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1 &1233371921
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,7 +1119,7 @@ PrefabInstance:
     - target: {fileID: 7946329876389960894, guid: 20213fef74f5d45b7a44bc6dab6fd63a,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2797745060900154052, guid: 20213fef74f5d45b7a44bc6dab6fd63a,
         type: 3}

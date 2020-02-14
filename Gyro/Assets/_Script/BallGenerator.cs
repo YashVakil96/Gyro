@@ -187,7 +187,7 @@ public class BallGenerator : MonoBehaviour
     {
         if(GenerationPoint.y>0)
         {
-            Debug.Log("UP");
+            //Debug.Log("UP");
 
             //UP
             if (GenerationPoint.x>0)

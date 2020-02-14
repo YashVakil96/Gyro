@@ -63,23 +63,124 @@ public class BallScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player")
+        if(collision.gameObject.name == "Blue")
         {
-            Debug.Log("2");
-            ScoreManager.ScorePoints++;
-            foreach (var item in Ballcount)
+            if(gameObject.GetComponent<SpriteRenderer>().color.b==1)
             {
-                if(item==gameObject.name)
+                //Debug.Log("BlueBall Hit");
+
+                ScoreManager.ScorePoints++;
+                foreach (var item in Ballcount)
                 {
-                    Debug.Log("3");
-                    HideTailIndex = item;
-                    Dead = true;
-                    Ballcount.Remove(item);
+                    if (item == gameObject.name)
+                    {
+                        HideTailIndex = item;
+                        Dead = true;
+                        Ballcount.Remove(item);
+                    }
                 }
             }
-        }//If collision with player
+            else
+            {
+                //Debug.Log("OtherballHit");
 
-        if(collision.gameObject.name=="TriggerLine")
+                foreach (var item in Ballcount)
+                {
+                    if (item == gameObject.name)
+                    {
+                        HideTailIndex = item;
+                        Dead = true;
+                        Ballcount.Remove(item);
+                    }
+                }
+            }
+            
+        }//if hits blue
+        else if(collision.gameObject.name == "Green")
+        {
+            //IF green hits green score increase
+            if (gameObject.GetComponent<SpriteRenderer>().color.g == 1)
+            {
+                //Debug.Log("GreenBall Hit");
+
+                ScoreManager.ScorePoints++;
+                foreach (var item in Ballcount)
+                {
+                    if (item == gameObject.name)
+                    {
+                        HideTailIndex = item;
+                        Dead = true;
+                        Ballcount.Remove(item);
+                    }
+                }
+            }
+            else
+            {
+                //Debug.Log("OtherballHit");
+
+                foreach (var item in Ballcount)
+                {
+                    if (item == gameObject.name)
+                    {
+                        HideTailIndex = item;
+                        Dead = true;
+                        Ballcount.Remove(item);
+                    }
+                }
+            }
+        }//if hits green
+        else if (collision.gameObject.name == "Red")
+        {
+            //IF red hits red score increase
+            if (gameObject.GetComponent<SpriteRenderer>().color.r == 1)
+            {
+                //Debug.Log("RedBall Hit");
+
+                ScoreManager.ScorePoints++;
+                foreach (var item in Ballcount)
+                {
+                    if (item == gameObject.name)
+                    {
+                        HideTailIndex = item;
+                        Dead = true;
+                        Ballcount.Remove(item);
+                    }
+                }
+            }
+            else
+            {
+                //Debug.Log("OtherballHit");
+
+                foreach (var item in Ballcount)
+                {
+                    if (item == gameObject.name)
+                    {
+                        HideTailIndex = item;
+                        Dead = true;
+                        Ballcount.Remove(item);
+                    }
+                }
+            }
+        }//if hits red
+
+
+        //if (collision.gameObject.name == "Player")
+        //{
+        //    Debug.Log("2");
+        //    ScoreManager.ScorePoints++;
+        //    foreach (var item in Ballcount)
+        //    {
+        //        if(item==gameObject.name)
+        //        {
+        //            Debug.Log("3");
+        //            HideTailIndex = item;
+        //            Dead = true;
+        //            Ballcount.Remove(item);
+        //        }
+        //    }
+        //}//If collision with player
+
+        if (collision.gameObject.name=="TriggerLine")
         {
             if(BallGenerator.PatternGenerator==0)
             {
@@ -92,7 +193,7 @@ public class BallScript : MonoBehaviour
             {
                 //Debug.Log("HERE");
                 BallGenerator.RowCounter++;
-                Debug.Log(BallGenerator.RowCounter);
+                //Debug.Log(BallGenerator.RowCounter);
                 if(BallGenerator.RowCounter == 3)
                 {
                     BallGenerator.RowCounter = 0;
