@@ -642,11 +642,6 @@ public class BallGenerator : MonoBehaviour
 
     void Pattern(int Start, int End)
     {
-        /*
-        Start Limit
-        End Limit
-
-         */
         PatternGenerator = Random.Range(Start, End);
         if (OldPattern == Start)
         {

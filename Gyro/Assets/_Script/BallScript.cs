@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class BallScript : MonoBehaviour
 {
@@ -6,14 +7,19 @@ public class BallScript : MonoBehaviour
 
     public static float SpeedStatic;
     public static string ObjectName;
+    public static List<string> Ballcount = new List<string>();
+    public static bool Dead;
 
+    public bool DeadCheck;
     public float Speed;
 
     private Transform FollowTarget;
     private Vector2 TargetPos;
     private float size;
     private TrailRenderer Tail;
-    
+    private float alpha;
+    private string HideTailIndex;
+
     #endregion
 
 
@@ -21,20 +27,23 @@ public class BallScript : MonoBehaviour
 
     private void Start()
     {
-        FollowTarget = GameObject.Find("Follow").GetComponent<Transform>();
-        Tail = GetComponent<TrailRenderer>();
-        TargetPos = FollowTarget.position;
-        size = Random.Range(0.2f, 0.41f);
-        Tail.startWidth = size;
-        Tail.endWidth = size;
-        Vector3 localSize = new Vector3(size, size, 1);
-        transform.localScale = localSize;
+        FollowTarget = GameObject.Find("Follow").GetComponent<Transform>();//Chase
+        TargetPos = FollowTarget.position;//Chase
+
+        size = Random.Range(0.2f, 0.41f);//Ballsize
+        Vector3 localSize = new Vector3(size, size, 1);//ballsize
+        transform.localScale = localSize;//ballsize
+
+        Tail = GetComponent<TrailRenderer>();//Trail Renderer
+        Tail.startWidth = size;//tail start Width
+        Tail.endWidth = size;//Tail end Width
         BallGenerator.IsBallAlive = true;
         this.gameObject.name = this.gameObject.GetInstanceID().ToString();
         ObjectName = this.gameObject.name;
-        Alpha.Ballcount.Add(gameObject.name);
+        Ballcount.Add(gameObject.name);
+        alpha = Tail.startColor.a;
 
-        if(SpeedStatic>0)
+        if (SpeedStatic>0)
         {
             Speed = SpeedStatic;
         }
@@ -48,17 +57,27 @@ public class BallScript : MonoBehaviour
     private void Update()
     {
         MoveBall(Speed);
+        DeadCheck = Dead;
+        HideTail(HideTailIndex);
     }//update
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Player")
         {
-            //Debug.Log("here");
+            Debug.Log("2");
             ScoreManager.ScorePoints++;
-            //Destroy(this.gameObject);
-            //Debug.Log("Score Points: " + ScoreManager.ScorePoints);
-        }
+            foreach (var item in Ballcount)
+            {
+                if(item==gameObject.name)
+                {
+                    Debug.Log("3");
+                    HideTailIndex = item;
+                    Dead = true;
+                    Ballcount.Remove(item);
+                }
+            }
+        }//If collision with player
 
         if(collision.gameObject.name=="TriggerLine")
         {
@@ -110,7 +129,7 @@ public class BallScript : MonoBehaviour
                     BallGenerator.IsPatternRunning = false;
                 }
             }
-        }
+        }//Triggerline Collision
         
     }//Trigger Enter
 
@@ -122,13 +141,31 @@ public class BallScript : MonoBehaviour
     public  void MoveBall()
     {
         transform.position = Vector2.MoveTowards(transform.position, TargetPos, Speed * Time.deltaTime);
-    }
+    }//MoveBall
 
     public void MoveBall(float speed)
     {
         transform.position = Vector2.MoveTowards(transform.position, TargetPos, Speed * Time.deltaTime);
-    }
+    }//MoveBall
 
+
+    void HideTail(string index)
+    {
+        alpha = Tail.startColor.a;
+
+        if (Dead)
+        {
+            alpha -= Time.deltaTime;
+            GameObject.Find(index).GetComponent<TrailRenderer>().startColor= new Color(Tail.startColor.r, Tail.startColor.g, Tail.startColor.b, alpha);
+            GameObject.Find(index).GetComponent<TrailRenderer>().endColor = new Color(Tail.endColor.r, Tail.endColor.g, Tail.endColor.b, alpha);
+
+            if (alpha <= 0)
+            {
+                BallScript.Dead = false;
+                Destroy(gameObject);
+            }
+        }//If Dead
+    }
     #endregion
 
 
