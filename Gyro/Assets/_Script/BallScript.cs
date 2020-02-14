@@ -70,6 +70,7 @@ public class BallScript : MonoBehaviour
                 //Debug.Log("BlueBall Hit");
 
                 ScoreManager.ScorePoints++;
+                Debug.Log("BlueHealth: " + HealthScript.BlueHealth);
                 foreach (var item in Ballcount)
                 {
                     if (item == gameObject.name)
@@ -82,8 +83,29 @@ public class BallScript : MonoBehaviour
             }
             else
             {
-                //Debug.Log("OtherballHit");
+                /*
+                small ball -10
+                medium ball -15
+                large ball -25
+                 */
+                if(size >= 0.2 && size <= 0.29)
+                {
+                    HealthScript.BlueHealth -= 10;
+                }//if Small
 
+                else if(size >= 0.3 && size <= 0.35)
+                {
+                    HealthScript.BlueHealth -= 15;
+                }//if Medium
+
+                else if (size >= 0.35 && size <= 0.4)
+                {
+                    HealthScript.BlueHealth -= 25;
+                }//if large
+
+                
+                Debug.Log("BlueHealth: " + HealthScript.BlueHealth);
+                //Debug.Log("OtherballHit");
                 foreach (var item in Ballcount)
                 {
                     if (item == gameObject.name)
@@ -104,6 +126,7 @@ public class BallScript : MonoBehaviour
                 //Debug.Log("GreenBall Hit");
 
                 ScoreManager.ScorePoints++;
+                Debug.Log("GreenHealth: " + HealthScript.GreenHealth);
                 foreach (var item in Ballcount)
                 {
                     if (item == gameObject.name)
@@ -116,8 +139,24 @@ public class BallScript : MonoBehaviour
             }
             else
             {
-                //Debug.Log("OtherballHit");
+                if (size >= 0.2 && size <= 0.29)
+                {
+                    HealthScript.GreenHealth -= 10;
+                }//if Small
 
+                else if (size >= 0.3 && size <= 0.35)
+                {
+                    HealthScript.GreenHealth -= 15;
+                }//if Medium
+
+                else if (size >= 0.35 && size <= 0.4)
+                {
+                    HealthScript.GreenHealth -= 25;
+                }//if large
+                Debug.Log("GreenHealth: " + HealthScript.GreenHealth);
+
+
+                //Debug.Log("OtherballHit");
                 foreach (var item in Ballcount)
                 {
                     if (item == gameObject.name)
@@ -137,6 +176,8 @@ public class BallScript : MonoBehaviour
                 //Debug.Log("RedBall Hit");
 
                 ScoreManager.ScorePoints++;
+                Debug.Log("RedHealth: " + HealthScript.RedHealth);
+
                 foreach (var item in Ballcount)
                 {
                     if (item == gameObject.name)
@@ -149,8 +190,23 @@ public class BallScript : MonoBehaviour
             }
             else
             {
-                //Debug.Log("OtherballHit");
+                if (size >= 0.2 && size <= 0.29)
+                {
+                    HealthScript.RedHealth -= 10;
+                }//if Small
 
+                else if (size >= 0.3 && size <= 0.35)
+                {
+                    HealthScript.RedHealth -= 15;
+                }//if Medium
+
+                else if (size >= 0.35 && size <= 0.4)
+                {
+                    HealthScript.RedHealth -= 25;
+                }//if large
+                Debug.Log("RedHealth: " + HealthScript.RedHealth);
+
+                //Debug.Log("OtherballHit");
                 foreach (var item in Ballcount)
                 {
                     if (item == gameObject.name)
