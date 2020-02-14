@@ -10,6 +10,14 @@ public class HealthScript : MonoBehaviour
     public static float GreenHealth;
     public static float RedHealth;
 
+    private Color BlueAlpha;
+    private Color GreenAlpha;
+    private Color RedAlpha;
+
+    private float BlueAplhaHandler;
+    private float GreenAplhaHandler;
+    private float RedAplhaHandler;
+
     #endregion
 
 
@@ -19,11 +27,20 @@ public class HealthScript : MonoBehaviour
         BlueHealth = 100;
         GreenHealth = 100;
         RedHealth = 100;
+        //BlueAlpha = GetComponentInChildren<SpriteRenderer>().color;
+        BlueAlpha = transform.GetChild(0).GetComponent<SpriteRenderer>().color;
+        GreenAlpha = transform.GetChild(1).GetComponent<SpriteRenderer>().color;
+        RedAlpha = transform.GetChild(2).GetComponent<SpriteRenderer>().color;
     }//start
 
     private void Update()
     {
-        if(BlueHealth <= 0 || GreenHealth <= 0 || RedHealth <=0)
+        BlueAplhaHandler = BlueHealth;
+        BlueAlpha = new Color(BlueAlpha.r, BlueAlpha.g, BlueAlpha.b, BlueHealth);
+        transform.GetChild(0).GetComponent<SpriteRenderer>().color=BlueAlpha;
+        Debug.Log(BlueAlpha.a);
+
+        if (BlueHealth <= 0 || GreenHealth <= 0 || RedHealth <=0)
         {
             Debug.Log("Game Over");
         }

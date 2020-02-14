@@ -65,7 +65,7 @@ public class BallScript : MonoBehaviour
     {
         if(collision.gameObject.name == "Blue")
         {
-            if(gameObject.GetComponent<SpriteRenderer>().color.b==1)
+            if (gameObject.GetComponent<SpriteRenderer>().color.b==1)
             {
                 //Debug.Log("BlueBall Hit");
 
