@@ -396,6 +396,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85610b5d151f44dcd9e6ed939750f34c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OldRotation: {x: 0, y: 0, z: 0}
+  x: 0
+  speed: 0
+  TouchBegun: {x: 0, y: 0}
+  OldTouch: {x: 0, y: 0}
 --- !u!1 &373282204
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,7 +414,6 @@ GameObject:
   - component: {fileID: 373282206}
   - component: {fileID: 373282207}
   - component: {fileID: 373282205}
-  - component: {fileID: 373282208}
   m_Layer: 0
   m_Name: BallGenerator
   m_TagString: Untagged
@@ -466,22 +472,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &373282208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 373282204}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51fc79c93cc444cc6a4dcc97b42caed9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Balls:
-  - {fileID: 8316836437293950589, guid: 005e4f545e66349769b2dd4b81cb717e, type: 3}
-  - {fileID: 8316836437293950589, guid: 9db6079386f60498992577776fc7d285, type: 3}
-  - {fileID: 8316836437293950589, guid: 2b1812cfce71d45d1bf4776f937e9787, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
