@@ -36,8 +36,24 @@ public class HealthScript : MonoBehaviour
     private void Update()
     {
         BlueAplhaHandler = BlueHealth;
-        BlueAlpha = new Color(BlueAlpha.r, BlueAlpha.g, BlueAlpha.b, BlueHealth);
+        BlueAlpha.a = BlueHealth / 100;
+        if(BlueAlpha.a <= .2f)
+        {
+            BlueAlpha.a = .2f;
+        }
+        GreenAlpha.a = GreenHealth / 100;
+        if (GreenAlpha.a <= .2f)
+        {
+            GreenAlpha.a = .2f;
+        }
+        RedAlpha.a = RedHealth / 100;
+        if (RedAlpha.a <= .2f)
+        {
+            RedAlpha.a = .2f;
+        }
         transform.GetChild(0).GetComponent<SpriteRenderer>().color=BlueAlpha;
+        transform.GetChild(1).GetComponent<SpriteRenderer>().color=GreenAlpha;
+        transform.GetChild(2).GetComponent<SpriteRenderer>().color=RedAlpha;
         Debug.Log(BlueAlpha.a);
 
         if (BlueHealth <= 0 || GreenHealth <= 0 || RedHealth <=0)
