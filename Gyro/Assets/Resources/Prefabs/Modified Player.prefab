@@ -262,6 +262,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61e33db29e37c4806807f3431763922c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Defender_1: {fileID: 0}
+  Defender_2: {fileID: 0}
+  Defender_3: {fileID: 0}
 --- !u!1 &7783390159974000857
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,6 +560,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Defender_1
       objectReference: {fileID: 0}
+    - target: {fileID: 8316836437293950589, guid: 3f70c4a1142954cebaafd507c51d1fa9,
+        type: 3}
+      propertyPath: m_TagString
+      value: DefenderBall
+      objectReference: {fileID: 0}
     - target: {fileID: 7494520084695720485, guid: 3f70c4a1142954cebaafd507c51d1fa9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -631,6 +639,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Defender_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316836437293950589, guid: 3f70c4a1142954cebaafd507c51d1fa9,
+        type: 3}
+      propertyPath: m_TagString
+      value: DefenderBall
       objectReference: {fileID: 0}
     - target: {fileID: 7494520084695720485, guid: 3f70c4a1142954cebaafd507c51d1fa9,
         type: 3}
@@ -707,6 +720,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Defender_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316836437293950589, guid: 3f70c4a1142954cebaafd507c51d1fa9,
+        type: 3}
+      propertyPath: m_TagString
+      value: DefenderBall
       objectReference: {fileID: 0}
     - target: {fileID: 7494520084695720485, guid: 3f70c4a1142954cebaafd507c51d1fa9,
         type: 3}

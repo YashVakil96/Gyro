@@ -12,7 +12,7 @@ public class PowerUps : MonoBehaviour
     public GameObject Defender_2;
     public GameObject Defender_3;
     private Transform Player;
-    private bool DefenderBool;
+    public static bool DefenderBool;
 
     #endregion
 
@@ -21,13 +21,7 @@ public class PowerUps : MonoBehaviour
 
     private void Start()
     {
-        Player = GameObject.Find("Player").GetComponent<Transform>();
-        //Defender_1 = GameObject.Find("Defender_1");
-        //Defender_2 = GameObject.Find("Defender_2");
-        //Defender_3 = GameObject.Find("Defender_3");
-        //Defender_1.SetActive(false);
-        //Defender_2.SetActive(false);
-        //Defender_3.SetActive(false);
+        Player = GameObject.Find("Follow").GetComponent<Transform>();
     }//start
 
     private void Update()

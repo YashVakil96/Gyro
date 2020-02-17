@@ -58,6 +58,7 @@ public class HealthScript : MonoBehaviour
         if (BlueHealth <= 0 || GreenHealth <= 0 || RedHealth <=0)
         {
             Debug.Log("Game Over");
+            Time.timeScale = 0f;
         }
         else
         {

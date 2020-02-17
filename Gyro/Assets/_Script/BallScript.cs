@@ -63,12 +63,17 @@ public class BallScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.name == "Blue")
+        if(collision.gameObject.name == "Blue" || collision.CompareTag("DefenderBall"))
         {
-            if (gameObject.GetComponent<SpriteRenderer>().color.b==1)
-            {
-                //Debug.Log("BlueBall Hit");
 
+            if(gameObject.CompareTag("DefenderBall"))
+            {
+                PowerUps.StartDefender = true;
+                Destroy(this.gameObject);
+            }
+
+            if (gameObject.GetComponent<SpriteRenderer>().color.b==1 )
+            {
                 ScoreManager.ScorePoints++;
                 Debug.Log("BlueHealth: " + HealthScript.BlueHealth);
                 foreach (var item in Ballcount)
@@ -102,10 +107,7 @@ public class BallScript : MonoBehaviour
                 {
                     HealthScript.BlueHealth -= 25;
                 }//if large
-
                 
-                Debug.Log("BlueHealth: " + HealthScript.BlueHealth);
-                //Debug.Log("OtherballHit");
                 foreach (var item in Ballcount)
                 {
                     if (item == gameObject.name)
@@ -118,15 +120,17 @@ public class BallScript : MonoBehaviour
             }
             
         }//if hits blue
-        else if(collision.gameObject.name == "Green")
+        else if(collision.gameObject.name == "Green" || collision.CompareTag("DefenderBall"))
         {
+            if (gameObject.CompareTag("DefenderBall"))
+            {
+                PowerUps.StartDefender = true;
+                Destroy(this.gameObject);
+            }
             //IF green hits green score increase
             if (gameObject.GetComponent<SpriteRenderer>().color.g == 1)
             {
-                //Debug.Log("GreenBall Hit");
-
                 ScoreManager.ScorePoints++;
-                Debug.Log("GreenHealth: " + HealthScript.GreenHealth);
                 foreach (var item in Ballcount)
                 {
                     if (item == gameObject.name)
@@ -153,10 +157,7 @@ public class BallScript : MonoBehaviour
                 {
                     HealthScript.GreenHealth -= 25;
                 }//if large
-                Debug.Log("GreenHealth: " + HealthScript.GreenHealth);
 
-
-                //Debug.Log("OtherballHit");
                 foreach (var item in Ballcount)
                 {
                     if (item == gameObject.name)
@@ -168,15 +169,17 @@ public class BallScript : MonoBehaviour
                 }
             }
         }//if hits green
-        else if (collision.gameObject.name == "Red")
+        else if (collision.gameObject.name == "Red" || collision.CompareTag("DefenderBall"))
         {
+            if (gameObject.CompareTag("DefenderBall"))
+            {
+                PowerUps.StartDefender = true;
+                Destroy(this.gameObject);
+            }
             //IF red hits red score increase
             if (gameObject.GetComponent<SpriteRenderer>().color.r == 1)
             {
-                //Debug.Log("RedBall Hit");
-
                 ScoreManager.ScorePoints++;
-                Debug.Log("RedHealth: " + HealthScript.RedHealth);
 
                 foreach (var item in Ballcount)
                 {
@@ -204,9 +207,7 @@ public class BallScript : MonoBehaviour
                 {
                     HealthScript.RedHealth -= 25;
                 }//if large
-                Debug.Log("RedHealth: " + HealthScript.RedHealth);
 
-                //Debug.Log("OtherballHit");
                 foreach (var item in Ballcount)
                 {
                     if (item == gameObject.name)
@@ -220,36 +221,17 @@ public class BallScript : MonoBehaviour
         }//if hits red
 
 
-        //if (collision.gameObject.name == "Player")
-        //{
-        //    Debug.Log("2");
-        //    ScoreManager.ScorePoints++;
-        //    foreach (var item in Ballcount)
-        //    {
-        //        if(item==gameObject.name)
-        //        {
-        //            Debug.Log("3");
-        //            HideTailIndex = item;
-        //            Dead = true;
-        //            Ballcount.Remove(item);
-        //        }
-        //    }
-        //}//If collision with player
-
         if (collision.gameObject.name=="TriggerLine")
         {
             if(BallGenerator.PatternGenerator==0)
             {
                 BallGenerator.TriggerIsSet = true;//Script 1
-                //Debug.Log("Hits");
                 BallGenerator.IsPatternRunning = false;
             }
 
             else if(BallGenerator.PatternGenerator==1)
             {
-                //Debug.Log("HERE");
                 BallGenerator.RowCounter++;
-                //Debug.Log(BallGenerator.RowCounter);
                 if(BallGenerator.RowCounter == 3)
                 {
                     BallGenerator.RowCounter = 0;
@@ -258,7 +240,6 @@ public class BallScript : MonoBehaviour
             }
             else if(BallGenerator.PatternGenerator == 2)
             {
-                //Debug.Log("Pattern 2");
                 BallGenerator.C2Counter++;
                 if(BallGenerator.C2Counter==2)
                 {
@@ -268,7 +249,6 @@ public class BallScript : MonoBehaviour
             }
             else if (BallGenerator.PatternGenerator == 3)
             {
-                //Debug.Log("Pattern 3");
                 BallGenerator.C3Counter++;
                 if (BallGenerator.C3Counter == 3)
                 {
@@ -278,7 +258,6 @@ public class BallScript : MonoBehaviour
             }
             else if (BallGenerator.PatternGenerator == 4)
             {
-                //Debug.Log("Pattern 4");
                 BallGenerator.BarrageCounter++;
                 if (BallGenerator.BarrageCounter == 10)
                 {
@@ -324,6 +303,5 @@ public class BallScript : MonoBehaviour
         }//If Dead
     }
     #endregion
-
 
 }//class

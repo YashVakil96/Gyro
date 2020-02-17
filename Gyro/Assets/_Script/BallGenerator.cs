@@ -19,6 +19,8 @@ public class BallGenerator : MonoBehaviour
 
     public Transform RotateAround;
     public GameObject[] Ball;
+    public GameObject[] PowerBall;
+
     public Transform TopLeft;
     public Transform TopRight;
     public Transform Bottom;
@@ -32,7 +34,8 @@ public class BallGenerator : MonoBehaviour
     private int counterC3;
     private int counterRow;
     private int counterBB;
-    private BallScript ballScript;
+
+    private int DefenderCount;
 
     #endregion
 
@@ -42,8 +45,6 @@ public class BallGenerator : MonoBehaviour
     private void Start()
     {
         TriggerIsSet = true;
-        ballScript = FindObjectOfType<BallScript>();
-
     }//start
 
     private void Update()
@@ -54,7 +55,7 @@ public class BallGenerator : MonoBehaviour
             if (ScoreManager.ScorePoints <= 20)
             {
                 PatternGenerator = Random.Range(0, 2);
-                if(OldPattern==PatternGenerator)
+                if (OldPattern == PatternGenerator)
                 {
                     PatternGenerator = OldPattern == 0 ? 1 : 0;
                 }
@@ -80,6 +81,7 @@ public class BallGenerator : MonoBehaviour
                 PatternGenerator = Random.Range(0, 5);
                 Pattern(0, 5);
             }
+
             OldPattern = PatternGenerator;
 
             switch (PatternGenerator)
@@ -93,7 +95,7 @@ public class BallGenerator : MonoBehaviour
                 case 1:
                     //3 balls in a row of same color
                     GenerationPoint = GeneratingPoint();//Getting the spawnning point
-                    if(counterRow > 3)
+                    if (counterRow > 3)
                     {
                         BallsRow();
                         counterRow = 0;
@@ -108,7 +110,7 @@ public class BallGenerator : MonoBehaviour
                 case 2:
                     //2 Differnet color balls
                     GenerationPoint = GeneratingPoint();//Getting the spawnning point
-                    if(counterC2 > 3)
+                    if (counterC2 > 3)
                     {
                         Color2();
                         counterC2 = 0;
@@ -122,7 +124,7 @@ public class BallGenerator : MonoBehaviour
                 case 3:
                     //3 Differnet color balls
                     GenerationPoint = GeneratingPoint();//Getting the spawnning point
-                    if(counterC3 > 3)
+                    if (counterC3 > 3)
                     {
                         Color3();
                         counterC3 = 0;
@@ -136,7 +138,7 @@ public class BallGenerator : MonoBehaviour
                 case 4:
                     //ball barrage of same color generating on a circular path
                     GenerationPoint = GeneratingPoint();//Getting the spawnning point
-                    if(counterBB > 10)
+                    if (counterBB > 10)
                     {
                         BallBarrage();
                         counterBB = 0;
@@ -148,6 +150,10 @@ public class BallGenerator : MonoBehaviour
                     break;
 
             }//Switch
+
+            //Spawn Power ball on random or After some time
+            //Powers();
+            
 
         }//If Pattern is not running
 
@@ -661,16 +667,32 @@ public class BallGenerator : MonoBehaviour
 
     #endregion
 
-    #region PowerBalls
-
-    void PowerBalls()
+    void Powers()
     {
-        //Return or Activate any one power
-        PowerUps.StartDefender = true;
+        int ChoosePower = Random.Range(0, 0);
+        switch(ChoosePower)
+        {
+            case 0://Defenders
+                if(DefenderCount==10)
+                {
+                    if(!PowerUps.DefenderBool)
+                    {
+                        Instantiate(PowerBall[0], transform.position, Quaternion.identity);
+                        DefenderCount = 0;
+                    }
+                }
+                else
+                {
+                    if (!PowerUps.DefenderBool)
+                    {
+                        DefenderCount++;
+                    }
+                }
+                
+                break;
+        }//switch
+        
     }
-
-    #endregion
-
     #endregion
 
 }//class 

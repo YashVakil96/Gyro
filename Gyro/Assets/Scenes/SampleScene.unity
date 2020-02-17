@@ -181,6 +181,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &84407311 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2257420349817837469, guid: 20213fef74f5d45b7a44bc6dab6fd63a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4974076251531697910}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &155741752
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,7 +419,7 @@ GameObject:
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &373282205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,6 +437,8 @@ MonoBehaviour:
   - {fileID: 8316836437293950589, guid: 005e4f545e66349769b2dd4b81cb717e, type: 3}
   - {fileID: 8316836437293950589, guid: 9db6079386f60498992577776fc7d285, type: 3}
   - {fileID: 8316836437293950589, guid: 2b1812cfce71d45d1bf4776f937e9787, type: 3}
+  PowerBall:
+  - {fileID: 8316836437293950589, guid: 193935eeef9354cf7a2f7f9fdd930d57, type: 3}
   TopLeft: {fileID: 1297978810}
   TopRight: {fileID: 2077804641}
   Bottom: {fileID: 921145525}
@@ -547,6 +555,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &615287674 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4555446561245201665, guid: 20213fef74f5d45b7a44bc6dab6fd63a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4974076251531697910}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &617776495
 GameObject:
   m_ObjectHideFlags: 0
@@ -979,6 +993,12 @@ Transform:
   m_Father: {fileID: 283914700}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1823549630 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9182382618205529661, guid: 20213fef74f5d45b7a44bc6dab6fd63a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4974076251531697910}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1885531574
 GameObject:
   m_ObjectHideFlags: 0
@@ -1311,9 +1331,34 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1845362230037127239, guid: 20213fef74f5d45b7a44bc6dab6fd63a,
+        type: 3}
+      propertyPath: Defender_1
+      value: 
+      objectReference: {fileID: 1823549630}
+    - target: {fileID: 1845362230037127239, guid: 20213fef74f5d45b7a44bc6dab6fd63a,
+        type: 3}
+      propertyPath: Defender_2
+      value: 
+      objectReference: {fileID: 84407311}
+    - target: {fileID: 1845362230037127239, guid: 20213fef74f5d45b7a44bc6dab6fd63a,
+        type: 3}
+      propertyPath: Defender_3
+      value: 
+      objectReference: {fileID: 615287674}
     - target: {fileID: 9182382618205529661, guid: 20213fef74f5d45b7a44bc6dab6fd63a,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7903529322166951966, guid: 20213fef74f5d45b7a44bc6dab6fd63a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 978245964111860158, guid: 20213fef74f5d45b7a44bc6dab6fd63a,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
