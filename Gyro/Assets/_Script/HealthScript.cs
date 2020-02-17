@@ -54,7 +54,6 @@ public class HealthScript : MonoBehaviour
         transform.GetChild(0).GetComponent<SpriteRenderer>().color=BlueAlpha;
         transform.GetChild(1).GetComponent<SpriteRenderer>().color=GreenAlpha;
         transform.GetChild(2).GetComponent<SpriteRenderer>().color=RedAlpha;
-        Debug.Log(BlueAlpha.a);
 
         if (BlueHealth <= 0 || GreenHealth <= 0 || RedHealth <=0)
         {

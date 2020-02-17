@@ -580,7 +580,26 @@ public class BallGenerator : MonoBehaviour
 
     #endregion
 
+    void Pattern(int Start, int End)
+    {
+        PatternGenerator = Random.Range(Start, End);
+        if (OldPattern == Start)
+        {
+            PatternGenerator = Random.Range(Start + 1, End);
+        }
+        else if (OldPattern == End - 1)
+        {
+            PatternGenerator = Random.Range(Start, End - 1);
+        }
+        else
+        {
+            PatternGenerator = Random.Range(0, 2) == 0 ? PatternGenerator++ : PatternGenerator--;
+        }
+    }//Pattern
+
     #endregion
+
+    #region Generating Point
 
     Vector2 GeneratingPoint()
     {
@@ -640,22 +659,17 @@ public class BallGenerator : MonoBehaviour
         transform.position = GenerationPoint;//Ball Generator takes the position
     }//Check Generating Point
 
-    void Pattern(int Start, int End)
+    #endregion
+
+    #region PowerBalls
+
+    void PowerBalls()
     {
-        PatternGenerator = Random.Range(Start, End);
-        if (OldPattern == Start)
-        {
-            PatternGenerator = Random.Range(Start+1, End);
-        }
-        else if (OldPattern == End-1)
-        {
-            PatternGenerator = Random.Range(Start, End-1);
-        }
-        else
-        {
-            PatternGenerator = Random.Range(0, 2) == 0 ? PatternGenerator++ : PatternGenerator--;
-        }
+        //Return or Activate any one power
+        PowerUps.StartDefender = true;
     }
+
+    #endregion
 
     #endregion
 
