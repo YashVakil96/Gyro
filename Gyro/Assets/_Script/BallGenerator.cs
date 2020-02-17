@@ -152,8 +152,8 @@ public class BallGenerator : MonoBehaviour
             }//Switch
 
             //Spawn Power ball on random or After some time
-            //Powers();
-            
+            Powers();
+
 
         }//If Pattern is not running
 
@@ -677,6 +677,7 @@ public class BallGenerator : MonoBehaviour
                 {
                     if(!PowerUps.DefenderBool)
                     {
+                        IsPatternRunning = true;
                         Instantiate(PowerBall[0], transform.position, Quaternion.identity);
                         DefenderCount = 0;
                     }

@@ -55,6 +55,7 @@ public class PowerUps : MonoBehaviour
 
     IEnumerator Defender()
     {
+        BallGenerator.IsPatternRunning = false;
         yield return new WaitForSeconds(10) ;
         //Defender Bool False
         DefenderBool = false;
